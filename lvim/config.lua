@@ -51,7 +51,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- Change theme settings
 -- lvim.builtin.theme.options.dim_inactive = true
 -- lvim.builtin.theme.options.style = "storm"
-
+-- lvim.builtin.which_key.mappings["FF"] = { "<cmd>lua require(\"dapui\").eval()<CR>" }
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 lvim.builtin.which_key.mappings["tt"] = { "<cmd>TroubleToggle<CR>", "Toggle Trouble" }
@@ -64,7 +64,7 @@ lvim.builtin.which_key.mappings["t"] = {
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
 }
-
+lvim.builtin.which_key.mappings["mm"] = { "<C-w>_", "Maximize" }
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
@@ -72,6 +72,8 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.arrow_closed = ""
+lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.arrow_open = ""
 -- lvim.builtin.lualine.style = "powerline_dark"
 lvim.builtin.lualine.options.theme = "catppuccin"
 
@@ -182,13 +184,17 @@ lvim.plugins = {
   { "catppuccin/nvim", as = "catppuccin" },
   { "kdheepak/lazygit.nvim" },
   { "jalvesaq/Nvim-R" },
-  --  { "ldelossa/nvim-ide" },
+  { "declancm/maximize.nvim" },
+  { "christoomey/vim-tmux-navigator" },
 }
+
+local mm = require("maximize")
+mm.setup()
 
 local dap = require("dap")
 dap.adapters.python = {
   type = "executable",
-  command = ".venv/bin/python3",
+  command = "/Users/erol/.pyenv/shims/python3",
   args = { "-m", "debugpy.adapter" },
 }
 
