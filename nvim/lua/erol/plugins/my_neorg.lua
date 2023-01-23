@@ -21,8 +21,8 @@ require("orgmode").setup({
   org_default_notes_file = "~/Documents/org_notes/refile.org",
 })
 
-require("cmp").setup({
-  sources = {
-    { name = "orgmode" },
-  },
-})
+--require("cmp").setup({
+--  sources = {
+--    { name = "orgmode" },
+--  },
+--})

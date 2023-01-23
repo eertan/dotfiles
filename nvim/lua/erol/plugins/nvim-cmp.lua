@@ -38,10 +38,12 @@ cmp.setup({
   }),
   -- sources for autocompletion
   sources = cmp.config.sources({
+    { name = "otter" },
     { name = "nvim_lsp" }, -- lsp
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
+    { name = "orgmode" },
   }),
   -- configure lspkind for vs-code like icons
   formatting = {

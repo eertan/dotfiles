@@ -31,6 +31,8 @@ return packer.startup(function(use)
   -- packer can manage itself
   use("wbthomason/packer.nvim")
 
+  use("mortepau/codicons.nvim")
+
   use("nvim-lua/plenary.nvim") -- lua functions that many plugins use
 
   use("bluz71/vim-nightfly-guicolors") -- preferred colorscheme
@@ -108,6 +110,11 @@ return packer.startup(function(use)
   use("ryanoasis/vim-devicons")
   use("folke/which-key.nvim")
   use("kdheepak/lazygit.nvim")
+  use("jmbuhr/otter.nvim")
+  use({ "quarto-dev/quarto-nvim", requires = {
+    "jmbuhr/otter.nvim",
+    "neovim/nvim-lspconfig",
+  } })
 
   if packer_bootstrap then
     require("packer").sync()
