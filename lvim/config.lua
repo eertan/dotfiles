@@ -12,10 +12,10 @@ vim.opt.tabstop = 4
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "catppuccin" --"Onedarker"
+lvim.colorscheme = "catppuccin-mocha" --"Onedarker"
 lvim.transparent_window = true
 lvim.lsp.diagnostics.virtual_text = false
-
+lvim.builtin.bufferline.active = false
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -74,8 +74,8 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.arrow_closed = ""
 lvim.builtin.nvimtree.setup.renderer.icons.glyphs.folder.arrow_open = ""
--- lvim.builtin.lualine.style = "powerline_dark"
-lvim.builtin.lualine.options.theme = "catppuccin"
+lvim.builtin.lualine.style = "lvim"
+-- lvim.builtin.lualine.options.theme = "catppuccin"
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -186,7 +186,59 @@ lvim.plugins = {
   { "jalvesaq/Nvim-R" },
   { "declancm/maximize.nvim" },
   { "christoomey/vim-tmux-navigator" },
+  { "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup({
+        -- optional configuration
+      })
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
+  { "quarto-dev/quarto-nvim",
+    requires = {
+      "jmbuhr/otter.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    config = function()
+      require("quarto").setup({
+        lspFeatures = {
+          enabled = true,
+          languages = { "r", "python" },
+          diagnostics = {
+            enabled = true,
+            triggers = { "BufWrite" },
+          },
+          completion = {
+            enabled = true,
+          },
+        },
+      })
+    end,
+  },
+  -- { "nvim-orgmode/orgmode",
+  --   config = function()
+  --     require('orgmode').setup {}
+  --   end
+  -- }
+
 }
+
+-- quarto completion lsp
+table.insert(lvim.builtin.cmp.sources, 1, { name = "otter" })
+
+-- orgmode setup
+-- require('orgmode').setup({
+--   org_agenda_files = { '~/Projects/agenda/org/*' },
+--   org_default_notes_file = '~/Projects/agenda/org/refile.org',
+-- })
+-- -- Load custom treesitter grammar for org filetype
+-- require('orgmode').setup_ts_grammar()
+-- -- org completion
+-- table.insert(lvim.builtin.cmp.sources, 2, { name = "org" })
 
 local mm = require("maximize")
 mm.setup()
