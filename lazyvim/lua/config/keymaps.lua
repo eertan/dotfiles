@@ -26,5 +26,13 @@ local slime = {
   },
 }
 
+local debug = {
+  d = {
+    name = "debug",
+    t = { ":DapToggleBreakpoint<cr>", "toggle breakpoint" },
+    c = { ":DapContinue<cr>", "start/continue" },
+  },
+}
 whichkey.register(quarto, { prefix = "<leader>" })
 whichkey.register(slime, { prefix = "<leader>" })
+whichkey.register(debug, { prefix = "<leader>" })
