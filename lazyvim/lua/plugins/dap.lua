@@ -15,7 +15,6 @@ return {
           type = "python", -- the type here established the link to the adapter definition: `dap.adapters.python`
           request = "launch",
           name = "Launch file",
-
           -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
 
           program = "${file}", -- This configuration will launch the current file if used.
@@ -43,7 +42,32 @@ return {
       local dap = require("dap")
 
       local dapui = require("dapui")
-      dapui.setup()
+      dapui.setup({
+        layouts = {
+          {
+            elements = {
+              {
+                id = "scopes",
+                size = 0.75,
+              },
+              {
+                id = "breakpoints",
+                size = 0.25,
+              },
+            },
+            position = "left",
+            size = 0.25,
+          },
+          {
+            elements = { {
+              id = "repl",
+              size = 1.0,
+            } },
+            position = "bottom",
+            size = 0.5,
+          },
+        },
+      })
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end
