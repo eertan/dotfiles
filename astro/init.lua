@@ -1,5 +1,5 @@
 return {
-  colorscheme = "catppuccin",
+  colorscheme = "nightfly",
   plugins = {
     -- init = {
     --   ['kevinhwang91/nvim-ufo'] = {disable = true},
@@ -12,6 +12,9 @@ return {
       "catppuccin/nvim",
       as = "catppuccin",
       config = function() require("catppuccin").setup {} end,
+    },
+    {
+      "RRethy/base16-nvim",
     },
     { "rebelot/kanagawa.nvim" },
     {
@@ -51,6 +54,7 @@ return {
             "StatusLine",
             "StatusLineNC",
             "EndOfBuffer",
+            "winbar",
           },
           extra_groups = {
             "DiagnosticSignHint",
@@ -77,6 +81,7 @@ return {
     { "folke/tokyonight.nvim" },
     { "felipeagc/fleet-theme-nvim", config = function() require("fleet-theme").setup {} end },
     { "rose-pine/neovim", name = "rose-pine" },
+    { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
     {
       "declancm/maximize.nvim",
       opts = {
