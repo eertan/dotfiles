@@ -4,7 +4,6 @@ return {
     config = function()
       local custom_t = require("lualine.themes.auto")
       local ll = require("lualine")
-      
       -- local lualine = require("lualine")
       --
       -- Color table for highlights
