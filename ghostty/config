@@ -1,0 +1,13 @@
+# theme = Everforest Dark - Hard
+# theme = Catppuccin Mocha
+# theme = Mariana
+theme = Flexoki Light
+font-family = JetBrains Mono
+font-size = 14
+background-opacity = 0.9
+background-blur = true
+keybind = ctrl+k=goto_split:up
+keybind = ctrl+j=goto_split:down
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+m=toggle_split_zoom
